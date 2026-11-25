@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    font-family: 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F6EBDD;
+    color: #3B2A22;
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  code, pre, .font-mono-rtl {
+    font-family: 'JetBrains Mono', 'Vazirmatn', monospace;
+  }
+}
+
+.paper-surface {
+  background-color: #FBF5EC;
+  border: 1px solid #DECBB8;
+}
+
+.rose-surface {
+  background-color: #EBC3BC;
+  border: 1px solid #D8AAA2;
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-enter {
+  animation: card-enter 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.prompt-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.prompt-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prompt-scroll::-webkit-scrollbar-thumb {
+  background: rgba(92, 26, 43, 0.24);
+  border-radius: 9999px;
+}

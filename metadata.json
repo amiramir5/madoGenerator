@@ -1,0 +1,6 @@
+{
+  "name": "madoGenerator",
+  "description": "استودیو ادیتوریال تولید ایده، پرامپت استوری محصول‌محور و موشن‌گرافیک MP4 برای فینگرفود و کیترینگ مادو تبریز (mado.fingerfood.tabriz).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

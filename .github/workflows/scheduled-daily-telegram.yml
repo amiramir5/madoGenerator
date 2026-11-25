@@ -1,0 +1,41 @@
+name: Mado Daily Scheduled Telegram Runner
+
+on:
+  schedule:
+    # 11:00 Tehran time (07:30 UTC)
+    - cron: '30 7 * * *'
+    # 15:00 Tehran time (11:30 UTC)
+    - cron: '30 11 * * *'
+    # 20:00 Tehran time (16:30 UTC)
+    - cron: '30 16 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (do not send to Telegram)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  run-daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Run daily automation
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          APP_URL: ${{ secrets.APP_URL }}
+          DAILY_RUN_SECRET: ${{ secrets.DAILY_RUN_SECRET }}
+        run: npx tsx scripts/daily-runner.ts

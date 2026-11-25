@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "Idea": {
+      "title": "Idea",
+      "description": "Generated idea and content prompt item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "selected_angle": { "type": "string" },
+        "angle_reason": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "source": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "AppConfig": {
+      "title": "AppConfig",
+      "description": "Editable lists and automation configuration",
+      "type": "object",
+      "properties": {
+        "contentAngles": { "type": "array" },
+        "fontPairs": { "type": "array" },
+        "textLayouts": { "type": "array" },
+        "cardStyles": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "ExecutionLog": {
+      "title": "ExecutionLog",
+      "description": "Logs of daily automated executions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string" },
+        "isDryRun": { "type": "boolean" },
+        "ideaTitle": { "type": "string" },
+        "imagesCount": { "type": "number" },
+        "telegramSent": { "type": "boolean" },
+        "message": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "status"]
+    }
+  },
+  "firestore": {
+    "/ideas/{ideaId}": {
+      "schema": "Idea",
+      "description": "Stores generated ideas and prompt history"
+    },
+    "/settings/global": {
+      "schema": "AppConfig",
+      "description": "Global settings and editable lists for angles and fonts"
+    },
+    "/execution_logs/{logId}": {
+      "schema": "ExecutionLog",
+      "description": "Audit logs for automated and manual runs"
+    }
+  }
+}
